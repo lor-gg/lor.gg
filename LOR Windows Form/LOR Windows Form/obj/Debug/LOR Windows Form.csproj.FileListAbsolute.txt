@@ -1,0 +1,13 @@
+C:\Users\Conner Soule\Desktop\lor.gg\LOR Windows Form\LOR Windows Form\bin\Debug\LOR Windows Form.exe.config
+C:\Users\Conner Soule\Desktop\lor.gg\LOR Windows Form\LOR Windows Form\bin\Debug\LOR Windows Form.exe
+C:\Users\Conner Soule\Desktop\lor.gg\LOR Windows Form\LOR Windows Form\bin\Debug\LOR Windows Form.pdb
+C:\Users\Conner Soule\Desktop\lor.gg\LOR Windows Form\LOR Windows Form\obj\Debug\LOR Windows Form.csprojAssemblyReference.cache
+C:\Users\Conner Soule\Desktop\lor.gg\LOR Windows Form\LOR Windows Form\obj\Debug\LOR_Windows_Form.Properties.Resources.resources
+C:\Users\Conner Soule\Desktop\lor.gg\LOR Windows Form\LOR Windows Form\obj\Debug\LOR Windows Form.csproj.GenerateResource.cache
+C:\Users\Conner Soule\Desktop\lor.gg\LOR Windows Form\LOR Windows Form\obj\Debug\LOR Windows Form.csproj.CoreCompileInputs.cache
+C:\Users\Conner Soule\Desktop\lor.gg\LOR Windows Form\LOR Windows Form\obj\Debug\LOR Windows Form.exe
+C:\Users\Conner Soule\Desktop\lor.gg\LOR Windows Form\LOR Windows Form\obj\Debug\LOR Windows Form.pdb
+C:\Users\Conner Soule\Desktop\lor.gg\LOR Windows Form\LOR Windows Form\obj\Debug\LOR_Windows_Form.Deck.resources
+C:\Users\Conner Soule\Desktop\lor.gg\LOR Windows Form\LOR Windows Form\bin\Debug\Newtonsoft.Json.dll
+C:\Users\Conner Soule\Desktop\lor.gg\LOR Windows Form\LOR Windows Form\bin\Debug\Newtonsoft.Json.xml
+C:\Users\Conner Soule\Desktop\lor.gg\LOR Windows Form\LOR Windows Form\obj\Debug\LOR Windows Form.csproj.CopyComplete
