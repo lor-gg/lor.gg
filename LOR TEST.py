@@ -1,5 +1,5 @@
 import requests, time
-API_KEY = 'RGAPI-bab9ad3f-4b8c-4a2b-8540-54c14e8500a7'
+API_KEY = 'API_HERE'
 params = dict(api_key=API_KEY)
 url = "https://americas.api.riotgames.com/lor/ranked/v1/leaderboards"
 playerdict = {}
