@@ -4,7 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace LOR_Windows_Form
+namespace LOR
 {
     static class Program
     {
@@ -16,7 +16,7 @@ namespace LOR_Windows_Form
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LORGG());
+            Application.Run(new Form1());
         }
     }
 }

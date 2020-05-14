@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace LOR_Windows_Form.Properties
+namespace LOR.Properties
 {
 
 
