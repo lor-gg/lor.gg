@@ -1,6 +1,5 @@
-import requests
-import time
-API_KEY = 'insert API key here'
+import requests, time
+API_KEY = 'RGAPI-bab9ad3f-4b8c-4a2b-8540-54c14e8500a7'
 params = dict(api_key=API_KEY)
 url = "https://americas.api.riotgames.com/lor/ranked/v1/leaderboards"
 playerdict = {}
@@ -25,4 +24,4 @@ while True:
                 string = (str(x['name']) + ' WENT FROM: ' + playerdict[str(x['name'])] + ' TO: ' + str(x['rank']))
             playerdict[str(x['name'])] = int(x['rank'])
             print(string)
-    time.sleep(30)
+    time.sleep(10)
