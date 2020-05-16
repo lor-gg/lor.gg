@@ -79,28 +79,50 @@ namespace LOR
                     string text = "";
                     if (cards.CardsInDeck != null)
                     {
-                        Bitmap outputImage = new Bitmap(DeckList.Width, DeckList.Height * cards.CardsInDeck.Count * 2, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
-                        DeckList.Height = DeckList.Height * cards.CardsInDeck.Count * 2;
-                        int i = 0;
-                        using (Graphics graphics = Graphics.FromImage(outputImage))
-                        {
+                        int singleImgHeight = 37;
+                        DeckList.Height = singleImgHeight * cards.CardsInDeck.Count;
+                        DeckList.Width = 300;
+
+                        Bitmap outputImage = new Bitmap(DeckList.Width, DeckList.Height, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+                        using (Graphics graphics = Graphics.FromImage(outputImage)) {
+                            int i = 0;
                             foreach (var item in cards.CardsInDeck)
                             {
+                                string cardName = allCards[item.Key].name;
+                                int cardCopies = item.Value;
                                 text += allCards[item.Key].name + "   |   Copies: " + item.Value.ToString() + "\n";
-                                //if (allCards[item.Key].supertype == "Champion" && !found)
-                                //{
-                                //    found = true;
-                                //    Image image1 = Image.FromFile("../../../../imgs/" + item.Key + ".png");
-                                //    DeckList.Image = image1;
-                                //}
-                                //TRYING TO DRAW ALL CARDS TOGETHER IN SAME IMAGE
+                            
                                 Image image1 = Image.FromFile("../../../../imgs/" + item.Key + ".png");
-                                Bitmap objBitmap = new Bitmap(image1, new Size(DeckList.Width, (int)((float)(image1.Width/DeckList.Width)) * image1.Height));
+                            
+                                // TRYING TO DRAW ALL CARDS TOGETHER IN SAME IMAGE
+                                Size imgSize = new Size(DeckList.Width, (singleImgHeight));
+                                Point imgPos = new Point(0, i * singleImgHeight);
                                 Console.WriteLine("=======");
                                 Console.WriteLine(i);
-                                Point imgPos = new Point(0, (i * objBitmap.Height));
+                                Console.WriteLine(imgSize);
                                 Console.WriteLine(imgPos);
-                                graphics.DrawImage(objBitmap, imgPos);
+                                
+                                if (allCards[item.Key].type == "Unit")
+                                {
+                                    double scalingFactor = 0.66;
+                                    image1 = ResizeImage(image1, (int)(image1.Width * scalingFactor), (int)(image1.Height * scalingFactor));
+                                    graphics.DrawImage(image1, new Rectangle(new Point(0, i*singleImgHeight), imgSize),
+                                        new Rectangle(new Point(70, 150), imgSize), GraphicsUnit.Pixel);
+                                }
+                                else if (allCards[item.Key].type == "Spell")
+                                {
+                                    double scalingFactor = 0.8;
+                                    image1 = ResizeImage(image1, (int)(image1.Width * scalingFactor), (int)(image1.Height * scalingFactor));
+                                    graphics.DrawImage(image1, new Rectangle(new Point(0, i*singleImgHeight), imgSize),
+                                        new Rectangle(new Point(120, 200), imgSize), GraphicsUnit.Pixel);
+                                }
+                                
+                                using (Font cardFont = new Font("Arial", 17))
+                                {
+                                    graphics.DrawString(cardName, cardFont, Brushes.White, new Point(0, i*singleImgHeight + 5));
+                                    graphics.DrawString(cardCopies.ToString(), cardFont, Brushes.White, new Point(280, i*singleImgHeight + 5));
+                                }
+
                                 i++;
                             }
                         }
@@ -124,7 +146,7 @@ namespace LOR
 
                 //Dispose once all HttpClient calls are complete. This is not necessary if the containing object will be disposed of; for example in this case the HttpClient instance will be disposed automatically when the application terminates so the following call is superfluous.
             }
-            catch (Exception)
+            catch (System.AggregateException)
             {
                 CardList.Text = "LOR not running\n";
             }
@@ -137,6 +159,21 @@ namespace LOR
         {
             t.Abort();
         }
+
+        public Bitmap ResizeImage(Image image, int width, int height)
+        {
+            var destRect = new Rectangle(0, 0, width, height);
+            var destImage = new Bitmap(width, height);
+
+            destImage.SetResolution(image.HorizontalResolution, image.VerticalResolution);
+
+            using (var graphics = Graphics.FromImage(destImage))
+            {
+                graphics.DrawImage(image, destRect, 0, 0, image.Width,image.Height, GraphicsUnit.Pixel);
+            }
+
+            return destImage;
+        }
     }
     public class Deck
     {
@@ -148,6 +185,7 @@ namespace LOR
         public string name { get; set; }
         public string cardCode { get; set; }
         public string supertype { get; set; }
+        public string type { get; set; }
         //public List<img> assets { get; set; }
     }
 }
