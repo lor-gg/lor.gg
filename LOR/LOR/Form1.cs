@@ -94,7 +94,7 @@ namespace LOR
                                 //}
                                 //TRYING TO DRAW ALL CARDS TOGETHER IN SAME IMAGE
                                 Image image1 = Image.FromFile("../../../../imgs/" + item.Key + ".png");
-                                Bitmap objBitmap = new Bitmap(image1, new Size(DeckList.Width, (image1.Width/DeckList.Width) * image1.Height));
+                                Bitmap objBitmap = new Bitmap(image1, new Size(DeckList.Width, (int)((float)(image1.Width/DeckList.Width)) * image1.Height));
                                 Console.WriteLine("=======");
                                 Console.WriteLine(i);
                                 Point imgPos = new Point(0, (i * objBitmap.Height));
