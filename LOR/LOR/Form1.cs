@@ -78,29 +78,32 @@ namespace LOR
                     string text = "";
                     if (cards.CardsInDeck != null)
                     {
-                        bool found = false;
-                        //Bitmap outputImage = new Bitmap(DeckList.Width, DeckList.Height, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
-                        //using (Graphics graphics = Graphics.FromImage(outputImage))
-                        foreach (var item in cards.CardsInDeck)
+                        Bitmap outputImage = new Bitmap(DeckList.Width, DeckList.Height * cards.CardsInDeck.Count * 2, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
+                        DeckList.Height = DeckList.Height * cards.CardsInDeck.Count * 2;
+                        int i = 0;
+                        using (Graphics graphics = Graphics.FromImage(outputImage))
                         {
-                            text += allCards[item.Key].name + "   |   Copies: " + item.Value.ToString() + "\n";
-                            if (allCards[item.Key].supertype == "Champion" && !found)
+                            foreach (var item in cards.CardsInDeck)
                             {
-                                found = true;
+                                text += allCards[item.Key].name + "   |   Copies: " + item.Value.ToString() + "\n";
+                                //if (allCards[item.Key].supertype == "Champion" && !found)
+                                //{
+                                //    found = true;
+                                //    Image image1 = Image.FromFile("../../../../imgs/" + item.Key + ".png");
+                                //    DeckList.Image = image1;
+                                //}
+                                //TRYING TO DRAW ALL CARDS TOGETHER IN SAME IMAGE
                                 Image image1 = Image.FromFile("../../../../imgs/" + item.Key + ".png");
-                                DeckList.Image = image1;
+                                Bitmap objBitmap = new Bitmap(image1, new Size(DeckList.Width, (image1.Width/DeckList.Width) * image1.Height));
+                                Console.WriteLine("=======");
+                                Console.WriteLine(i);
+                                Point imgPos = new Point(0, (i * objBitmap.Height));
+                                Console.WriteLine(imgPos);
+                                graphics.DrawImage(objBitmap, imgPos);
+                                i++;
                             }
-                            // TRYING TO DRAW ALL CARDS TOGETHER IN SAME IMAGE
-                            //Size imgSize = new Size(DeckList.Width, (DeckList.Height / cards.CardsInDeck.Count));
-                            //Point imgPos = new Point(0, (int)(((float)i / cards.CardsInDeck.Count) * DeckList.Height));
-                            //Console.WriteLine("=======");
-                            //Console.WriteLine(i);
-                            //Console.WriteLine(imgSize);
-                            //Console.WriteLine(imgPos);
-                            //graphics.DrawImage(image1, new Rectangle(new Point(0,image1.Height/2), imgSize),
-                            //    new Rectangle(imgPos, imgSize), GraphicsUnit.Pixel);
-                            //i++;
                         }
+                        DeckList.Image = outputImage;
                         CardList.Text = text;
                     }
                     else
