@@ -20,6 +20,7 @@ namespace LOR
     //    public string gameAbsolutePath { get; set; }
     //    public string fullAbsolutePath { get; set; }
     //}
+
     public partial class Form1 : Form
     {
         Dictionary<string, card> allCards;
