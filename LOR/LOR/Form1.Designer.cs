@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
+            this.update = new System.Windows.Forms.Button();
             this.CardList = new System.Windows.Forms.RichTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -46,6 +47,16 @@
             this.button1.Text = "GO";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // update button
+            // 
+            this.update.Location = new System.Drawing.Point(381, 793);
+            this.update.Name = "update";
+            this.update.Size = new System.Drawing.Size(75, 23);
+            this.update.TabIndex = 0;
+            this.update.Text = "update";
+            this.update.UseVisualStyleBackColor = true;
+            this.update.Click += new System.EventHandler(this.update_Click);
             // 
             // CardList
             // 
@@ -90,6 +101,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.CardList);
             this.Controls.Add(this.button1);
+            this.Controls.Add(this.update);
             this.Name = "Form1";
             this.Text = "LOR.GG";
             this.Load += new System.EventHandler(this.Form1_Load);
@@ -103,10 +115,10 @@
         #endregion
 
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button update;
         private System.Windows.Forms.RichTextBox CardList;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.PictureBox DeckList;
     }
 }
-
